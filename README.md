@@ -8,6 +8,7 @@
 ## Bibliothèques utilisées
 - `itk (5.4.0)`
 - `vtk (9.3.0)`
+- `numpy (1.26.4)`
 
 ## Lecture des données
 La lecture des données est réalisée de façon classique via `itk.imread`. Les valeurs des voxels sont ensuite converties en `itk.F` pour permettre l'utilisation d'algorithmes pré-définis.
