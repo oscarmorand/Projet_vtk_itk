@@ -1,7 +1,6 @@
 import itk
 
-
-def recalage(scan1, scan2, save=True, log=True):
+def alignData(scan1, scan2, save=None, log=False):
     dimension = scan1.GetImageDimension()
     FixedImageType = type(scan1)
     MovingImageType = type(scan2)
@@ -62,7 +61,7 @@ def recalage(scan1, scan2, save=True, log=True):
         print(f"Metric value after transformation: {final_metric_value}")
 
     # Sauvegarder l'image recalée
-    if save:
-        itk.imwrite(aligned_image, 'aligned_image.nrrd')
+    if save is not None:
+        itk.imwrite(aligned_image, save)
 
     return aligned_image
