@@ -11,7 +11,7 @@
 - `numpy (1.26.4)`
 
 ## Lecture des données
-La lecture des données est réalisée de façon classique via `itk.imread`. Les valeurs des voxels sont ensuite converties en `itk.F` pour permettre l'utilisation d'algorithmes pré-définis. Enfin, les valeurs des voxels sont ramenés entre 0 et 255 pour ne pas biaiser les algorithmes utilsés avec une amplitude différente des deux scans.
+La lecture des données est réalisée de façon classique via `itk.imread`. Les valeurs des voxels sont ensuite converties en `itk.F` pour permettre l'utilisation d'algorithmes pré-définis. Enfin, les valeurs des voxels sont ramenées entre 0 et 255 pour ne pas biaiser les algorithmes utilsés avec une amplitude différente des deux scans.
 
 ## Recalage d'images
 TODO
