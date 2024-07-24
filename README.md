@@ -14,7 +14,17 @@
 La lecture des données est réalisée de façon classique via `itk.imread`. Les valeurs des voxels sont ensuite converties en `itk.F` pour permettre l'utilisation d'algorithmes pré-définis. Enfin, les valeurs des voxels sont ramenées entre 0 et 255 pour ne pas biaiser les algorithmes utilsés avec une amplitude différente des deux scans.
 
 ## Recalage d'images
-TODO
+Différentes techniques de recalage ont été testés:
+- Recalage par Translation (`notebooks/TranslationRecalage.ipynb`): la plus simple, et qui de facon innatendu a été la seule a avoir fonctionnée. Ne donne pas des résultats parfait puisqu'elle ne permet que d'effectuer une opération de translation sur notre image pour la recaler mais on estime que ce sera suffisant dans notre étude.
+![Recalage 1](Images/Recalage1.png)
+- Recalage Rigide (`notebooks/RigidRecalage.ipynb`): n'est pas sensé être compliqué puisque n'ajoute qu'une rotation à la transformation effectuée, cependant le résultat final présente des valeurs inattendues.
+![Recalage 2](Images/Recalage2.png)
+- Recalage Affine (`notebooks/AffineRecalage.ipynb`): Le résultat du recalage présente des déformations qui détruisent totalement l'image, malgré tous les tests et tentatives d'optimisations des paramètres.
+![Recalage 3](Images/Recalage3.png)
+- Recalage par BSpline (`notebooks/BSplineRecalage.ipynb`): Cette fois le résultat n'est pas inexploitable, cependant le recalage se fait mal et l'image recalée est pire que l'image d'origine, de plus cette technique peut prendre beaucoup de temps.  
+![Recalage 4](Images/Recalage4.png)
+
+Au final, nous avons donc choisit d'intégrer le recalage par translation à notre pipeline finale. Cette étape est totalement automatique et ne cécessite pas d'inputs utilisateurs, cependant, comme c'est un problème d'optimisation, il peut prendre un peu de temps (entre 30s et 1min).
 
 ## Segmentation des tumeurs
 La segmentation des tumeurs est réalisée via une méthode semi-automatique. Pour chaque tumeur :
@@ -26,7 +36,11 @@ La segmentation des tumeurs est réalisée via une méthode semi-automatique. Po
   ![Segmentation 2](Images/Segmentation2.png)
 
 ## Analyse des changements
-TODO
+Pour l'analyse des changements, on calcule plusieurs métriques que l'on enregistre dans le fichier `results.json`. 
+- Le champ `scan1_tumors_volume` correspond au volume total des tumeurs détectées par la segmentation pour le scan numéro 1.
+- Le champ `scan2_tumors_volume` correspond au volume total des tumeurs détectées par la segmentation pour la scan numéro 2.
+- Le champ `tumors_volume_evolution` correspond à l'évolution en pourcentage de volume des tumeurs entre le scan 1 et 2. 
+- Le champ `centroids_evolution` correspond au déplacement en pixels du centroide de chaque tumeur détectée par la segmentation entre le scan 1 et 2. Si None est présente dans ce champ, alors cela signifie que le nombre de tumeurs détectées n'est pas le même entre les deux scans.
 
 ## Visualisation des changements
 TODO
