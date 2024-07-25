@@ -53,6 +53,7 @@ def alignData(scan1, scan2, save=None, log=False):
         UseReferenceImage=True,
         ReferenceImage=scan1
     )
+    resampler.update()
     aligned_image = resampler.GetOutput()
 
     if log:

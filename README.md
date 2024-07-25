@@ -19,7 +19,7 @@ La lecture des données est réalisée de façon classique via `itk.imread`. Les
 Différentes techniques de recalage ont été testés:
 - Recalage par Translation (`notebooks/TranslationRecalage.ipynb`): la plus simple, et qui de facon innatendu a été la seule a avoir fonctionnée. Ne donne pas des résultats parfait puisqu'elle ne permet que d'effectuer une opération de translation sur notre image pour la recaler mais on estime que ce sera suffisant dans notre étude.
 ![Recalage 1](Images/Recalage1.png)
-- Recalage Rigide (`notebooks/RigidRecalage.ipynb`): n'est pas sensé être compliqué puisque n'ajoute qu'une rotation à la transformation effectuée, cependant le résultat final présente des valeurs inattendues.
+- Recalage Rigide (`notebooks/RigidRecalage.ipynb`): n'est pas sensé être compliqué puisque n'ajoute qu'une rotation à la transformation effectuée, et peut potentiellement donner de meilleurs résultats, cependant lors de nos tests, la valeur de la métrique était inférieur à celle du recalage par translation. De plus ce type de recalage prend plus de temps d'exécution.
 ![Recalage 2](Images/Recalage2.png)
 - Recalage Affine (`notebooks/AffineRecalage.ipynb`): Le résultat du recalage présente des déformations qui détruisent totalement l'image, malgré tous les tests et tentatives d'optimisations des paramètres.
 ![Recalage 3](Images/Recalage3.png)
