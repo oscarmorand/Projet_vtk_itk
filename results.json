@@ -1,0 +1,8 @@
+{
+    "scan1_tumors_volume": "11329.0 voxels",
+    "scan2_tumors_volume": "12175.0 voxels",
+    "tumors_volume_evolution": "7.47 %",
+    "centroids_evolution": [
+        0
+    ]
+}

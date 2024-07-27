@@ -8,22 +8,22 @@ def merge_segmentation(segmentation1, segmentation2, scan1):
     merged_image.DeepCopy(scan1)
     
     # Get the image data
-    seg_data1 = segmentation1.GetPointData().GetScalars()
-    seg_data2 = segmentation2.GetPointData().GetScalars()
+    seg_data1 = segmentation1.flatten()
+    seg_data2 = segmentation2.flatten()
     data_merged = merged_image.GetPointData().GetScalars()
     
     # Merge the images
-    for i in range(seg_data1.GetNumberOfTuples()):
-        value1 = seg_data1.GetTuple1(i)
-        value2 = seg_data2.GetTuple1(i)
+    for i in range(data_merged.GetNumberOfTuples()):
+        value1 = seg_data1[i]
+        value2 = seg_data2[i]
         if (value1 == 255):
             data_merged.SetTuple1(i, 255)
         elif (value2 == 255):
             data_merged.SetTuple1(i, 200)
         else:
-            if (data_merged.GetTuple1(i) <= 20):
+            if (data_merged.GetTuple1(i) <= 100):
                 data_merged.SetTuple1(i, 0)
-            elif (20 < data_merged.GetTuple1(i) < 60):
+            elif (data_merged.GetTuple1(i) < 400):
                 data_merged.SetTuple1(i, 100)
             else:
                 data_merged.SetTuple1(i, 150)
@@ -54,9 +54,9 @@ def display_tumor(merged_segmentation):
     opacityTransferFunction.AddPoint(100, 0.01)
     opacityTransferFunction.AddPoint(150, 0.01)
     opacityTransferFunction.AddPoint(199, 0.01)
-    opacityTransferFunction.AddPoint(200, 0.1)
-    opacityTransferFunction.AddPoint(254, 0.1)
-    opacityTransferFunction.AddPoint(255, 0.5)
+    opacityTransferFunction.AddPoint(200, 0.05)
+    opacityTransferFunction.AddPoint(254, 0.05)
+    opacityTransferFunction.AddPoint(255, 0.07)
 
     # Create transfer mapping scalar value to color
     colorTransferFunction = vtk.vtkColorTransferFunction()
@@ -64,7 +64,7 @@ def display_tumor(merged_segmentation):
     colorTransferFunction.AddRGBPoint(99.0, 0.0, 0.0, 0.0)
     colorTransferFunction.AddRGBPoint(100.0, 1., 0.5, 0.5)
     colorTransferFunction.AddRGBPoint(150.0, 0.95, 0.85, 0.75)
-    colorTransferFunction.AddRGBPoint(192.0, 1.0, 0.0, 0.0)
+    colorTransferFunction.AddRGBPoint(192.0, 0.0, 1.0, 0.5)
     colorTransferFunction.AddRGBPoint(255.0, 0.0, 0.0, 1.0)
 
     # The property describes how the data will look

@@ -10,7 +10,7 @@ def segmentScan(scan, seed):
     connected_threshold = itk.ConnectedThresholdImageFilter.New(smoother.GetOutput())
 
     connected_threshold.SetReplaceValue(255)
-    connected_threshold.SetLower(400)
+    connected_threshold.SetLower(450)
     connected_threshold.SetSeed(seed)
     connected_threshold.Update()
     segmented_image = connected_threshold.GetOutput()

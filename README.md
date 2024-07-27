@@ -45,4 +45,12 @@ Pour l'analyse des changements, on calcule plusieurs métriques que l'on enregis
 - Le champ `centroids_evolution` correspond au déplacement en pixels du centroide de chaque tumeur détectée par la segmentation entre le scan 1 et 2. Si None est présente dans ce champ, alors cela signifie que le nombre de tumeurs détectées n'est pas le même entre les deux scans.
 
 ## Visualisation des changements
-TODO
+Pour la visualisation final des tumeurs le premier scan est utilisé pour placé le contexte du reste de la tête. Par la suite les ségmentations des tumeurs sont affichées.
+La ségmentation du premier scan apparaît en bleu foncé et par dessus la ségmentation du deuxième scan apparaît en vert clair.
+  ![Coronal](Images/Visualisation_coronal.png)
+  ![Sagittal](Images/Visualisation_sagittal.png)
+  ![Axial](Images/Visualisation_axial.png)
+  ![Zoomé](Images/Visualisation_zoom.png)
+
+# Temps d'execution
+Le temps d'execution global de ce projet pour arriver jusqu'à la visualisation est estimé à 3 minutes 30 secondes.

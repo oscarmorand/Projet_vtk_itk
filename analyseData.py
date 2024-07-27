@@ -35,11 +35,15 @@ def compute_tumors_evolution(mask1, mask2):
     tumor_volume_evolution, volume1, volume2 = compute_tumor_volume_evolution(regions1, regions2)
     centroids_evolution = compute_centroids_evolution(regions1, regions2)
 
-    with open('results.json', 'w', encoding='utf-8') as f:
-        json.dump({"scan1_tumors_volume": f"{volume1} voxels",
+    json_infos = {"scan1_tumors_volume": f"{volume1} voxels",
                    "scan2_tumors_volume": f"{volume2} voxels",
                    "tumors_volume_evolution": f"{tumor_volume_evolution * 100:.2f} %",
-                   "centroids_evolution": centroids_evolution}, f, ensure_ascii=False, indent=4)
+                   "centroids_evolution": centroids_evolution} 
+
+    print(json_infos)
+
+    with open('results.json', 'w', encoding='utf-8') as f:
+        json.dump(json_infos, f, ensure_ascii=False, indent=4)
 
 def analyseData(segmentation1, segmentation2):
     compute_tumors_evolution(segmentation1, segmentation2)
