@@ -13,5 +13,5 @@ if __name__ == '__main__':
     scan1, scan2 = readData(dataPath)
     scan2 = alignData(scan1, scan2)
     segmentation1, segmentation2 = segmentData(scan1, scan2)
-    evolution = analyseData(segmentation1, segmentation2)
-    visualizeData(evolution)
+    analyseData(segmentation1, segmentation2)
+    visualizeData(segmentation1, segmentation2, scan1)
