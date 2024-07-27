@@ -47,10 +47,7 @@ Pour l'analyse des changements, on calcule plusieurs métriques que l'on enregis
 ## Visualisation des changements
 Pour la visualisation final des tumeurs le premier scan est utilisé pour placé le contexte du reste de la tête. Par la suite les segmentations des tumeurs sont affichées.
 La segmentation du premier scan apparaît en bleu foncé et par dessus la segmentation du deuxième scan apparaît en vert clair.
-  ![Coronal](Images/Visualisation_coronal.png)
-  ![Sagittal](Images/Visualisation_sagittal.png)
-  ![Axial](Images/Visualisation_axial.png)
-  ![Zoomé](Images/Visualisation_zoom.png)
+  ![Coronal](Images/Visualisation_coronal.png) | ![Sagittal](Images/Visualisation_sagittal.png) | ![Axial](Images/Visualisation_axial.png) | ![Zoomé](Images/Visualisation_zoom.png)
 
 # Temps d'exécution
 Le temps d'exécution global de ce projet pour arriver jusqu'à la visualisation est estimé à 3 minutes 30 secondes.
